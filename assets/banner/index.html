@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>skibidiware.cc - Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Particle effects */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .particle:nth-child(odd) {
+            background: rgba(0, 255, 255, 0.6);
+        }
+
+        .particle:nth-child(3n) {
+            background: rgba(255, 0, 255, 0.6);
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.7;
+            }
+            33% { 
+                transform: translateY(-30px) translateX(30px) scale(1.1);
+                opacity: 1;
+            }
+            66% { 
+                transform: translateY(-60px) translateX(-20px) scale(0.9);
+                opacity: 0.8;
+            }
+        }
+
+        /* Animated border effect */
+        .banner-container {
+            position: relative;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 60px 80px;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.3),
+                inset 0 0 50px rgba(255, 255, 255, 0.05);
+            animation: borderGlow 3s ease infinite;
+        }
+
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.6), rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.6));
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 20px rgba(0, 255, 255, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.05);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 40px rgba(0, 255, 255, 0.6),
+                    inset 0 0 50px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* Main title */
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: rgba(0, 255, 255, 0.9);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Version info */
+        .version-info {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.4rem);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: decorationPulse 2s ease infinite;
+        }
+
+        .decoration-top {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .decoration-bottom {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes decorationPulse {
+            0%, 100% { opacity: 0.5; width: 100px; }
+            50% { opacity: 1; width: 150px; }
+        }
+
+        /* Lightning effects */
+        .lightning {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(135, 206, 235, 0.1);
+            opacity: 0;
+            animation: lightning 12s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes lightning {
+            0%, 95%, 100% { opacity: 0; }
+            96%, 97% { opacity: 0.8; }
+        }
+
+        /* Energy orbs */
+        .energy-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.8), rgba(0, 255, 255, 0.2), transparent);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            right: 15%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.8), rgba(255, 0, 255, 0.2), transparent);
+            animation-delay: 3s;
+        }
+
+        .orb-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(255, 255, 0, 0.8), rgba(255, 255, 0, 0.2), transparent);
+            animation-delay: 6s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .banner-container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            .main-title {
+                letter-spacing: 2px;
+            }
+            
+            .subtitle {
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background effects -->
+    <div class="lightning"></div>
+    <div class="particles"></div>
+    
+    <!-- Energy orbs -->
+    <div class="energy-orb orb-1"></div>
+    <div class="energy-orb orb-2"></div>
+    <div class="energy-orb orb-3"></div>
+    
+    <!-- Main banner content -->
+    <div class="banner-container">
+        <div class="decoration decoration-top"></div>
+        
+        <h1 class="main-title">skibidiware.cc</h1>
+        <h2 class="subtitle">Latest Update</h2>
+        <p class="version-info">Enhanced • Optimized • Ready</p>
+        
+        <div class="decoration decoration-bottom"></div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size and position
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles
+        createParticles();
+        
+        // Add subtle mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const banner = document.querySelector('.banner-container');
+            const rect = banner.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+            const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+            
+            banner.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
+        });
+        
+        // Reset transform when mouse leaves
+        document.addEventListener('mouseleave', () => {
+            const banner = document.querySelector('.banner-container');
+            banner.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+        });
+    </script>
+</body>
+</html>

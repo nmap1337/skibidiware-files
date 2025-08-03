@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading | skibidiware.cc</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0e0e0e;
+      color: #eeeeee;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
 
+    .top-left {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 16px;
+      color: #777676;
+      letter-spacing: 0.5px;
+    }
+
+    .center-content {
+      margin: auto;
+      text-align: center;
+    }
+
+    .center-content h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .tip {
+      font-size: 14px;
+      color: #777676;
+    }
+
+    .fact {
+      font-size: 16px;
+      color: #eeeeee;
+      margin-top: 4px;
+      min-height: 24px;
+      white-space: pre;
+    }
+
+    .caret {
+      display: inline-block;
+      width: 8px;
+      background-color: #eeeeee;
+      animation: blink 1s step-end infinite;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      50% { background-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-left">skibidiware.cc</div>
+
+  <div class="center-content">
+    <h1>Did you know?</h1>
+    <div class="tip">Tip:</div>
+    <div class="fact" id="fact"></div>
+  </div>
+
+  <script>
+    const facts = [
+      "skibidiware.cc was created at 14 June Friday 2024.",
+      "Alt+F4 is not a bug fix, but it does solve problems.",
+      "At the state of choosing a project's name my friend thought of name 'skibidiware' and i thought of adding '.cc' at the end.",
+      "Your monitor refresh rate can affect aim assist smoothness.",
+      "skibidiware.cc had perfect 555 total members value at their discord server by the time i was writting this. (03.08.2025)",
+      "Join our discord server: https://discord.gg/zhQWEWBEqG",
+      "You can reduce input lag by disabling full-screen optimizations.",
+      "Screengrabs will not catch me 🗣🔥.",
+      "Your mousepad has feelings too. Clean it.",
+      "Join our telegram channel: https://t.me/skibidiware_official",
+      "NLE Choppa said: 'I aim like a bot but win like a legend.'"
+    ];
+
+    const factEl = document.getElementById("fact");
+    let factIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    const caret = document.createElement("span");
+    caret.classList.add("caret");
+    factEl.appendChild(caret);
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeFact(fact) {
+      factEl.insertBefore(document.createTextNode(""), caret);
+      const textNode = factEl.childNodes[0];
+
+      for (let i = 0; i <= fact.length; i++) {
+        textNode.textContent = fact.slice(0, i);
+        await sleep(50);
+      }
+
+      await sleep(2000); // Wait with blinking caret
+
+      for (let i = fact.length; i >= 0; i--) {
+        textNode.textContent = fact.slice(0, i);
+        await sleep(25);
+      }
+
+      factEl.removeChild(textNode);
+    }
+
+    async function loopFacts() {
+      while (true) {
+        const fact = facts[factIndex];
+        await typeFact(fact);
+        factIndex = (factIndex + 1) % facts.length;
+      }
+    }
+
+    loopFacts();
+  </script>
+</body>
+</html>
